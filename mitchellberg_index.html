@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mitchell Berg — Linux Systems Administrator, IT Operations, Team Lead. Based in Arlington Heights, IL.">
+  <meta property="og:title" content="Mitchell Berg — Linux Systems Administrator">
+  <meta property="og:description" content="IT professional with 3+ years leading technical teams. ESCP certified. Top 30 PicoCTF 2019.">
+  <meta property="og:image" content="https://mitchellberg.org/avatar.png">
+  <meta name="theme-color" content="#1e1e2e">
+  <title>Mitchell Berg — Linux Systems Administrator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Syne:wght@700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#1e1e2e;--mantle:#181825;--crust:#11111b;
+      --s0:#313244;--s1:#45475a;--s2:#585b70;
+      --ov0:#6c7086;--ov2:#9399b2;
+      --text:#cdd6f4;--sub1:#bac2de;--sub0:#a6adc8;
+      --lav:#b4befe;--mauve:#cba6f7;--green:#a6e3a1;
+      --sky:#89dceb;--peach:#fab387;--yellow:#f9e2af;
+      --red:#f38ba8;--pink:#f5c2e7;
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.7;min-height:100vh}
+
+    .orb{position:fixed;border-radius:50%;filter:blur(100px);opacity:.07;pointer-events:none;z-index:0}
+    .o1{width:450px;height:450px;background:var(--mauve);top:-150px;right:-100px}
+    .o2{width:350px;height:350px;background:var(--lav);bottom:-100px;left:-100px}
+
+    .wrap{max-width:700px;margin:0 auto;padding:3rem 1.5rem 5rem;position:relative;z-index:1}
+
+    /* header */
+    .header{display:flex;align-items:flex-start;gap:1.25rem;padding-bottom:1.75rem;border-bottom:1px solid var(--s0);margin-bottom:2rem;flex-wrap:wrap}
+    .avatar{width:60px;height:60px;border-radius:50%;border:2px solid var(--s1);overflow:hidden;background:var(--s0);flex-shrink:0}
+    .avatar img{width:100%;height:100%;object-fit:cover;object-position:center top}
+    .header-mid{flex:1;min-width:200px}
+    .name{font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:800;color:var(--text);line-height:1.1;margin-bottom:.3rem}
+    .role{font-size:13px;color:var(--ov2);font-family:'JetBrains Mono',monospace;margin-bottom:.75rem}
+    .contact-row{display:flex;flex-wrap:wrap;gap:10px}
+    .contact-row a{font-size:12px;color:var(--sub0);text-decoration:none;display:flex;align-items:center;gap:4px;transition:color .15s}
+    .contact-row a:hover{color:var(--lav)}
+    .header-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0}
+    .avail{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--green);font-family:'JetBrains Mono',monospace}
+    .avail-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+    .dl-btn{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--sub0);background:var(--mantle);border:1px solid var(--s1);border-radius:6px;padding:5px 12px;text-decoration:none;font-family:'JetBrains Mono',monospace;transition:border-color .15s,color .15s}
+    .dl-btn:hover{border-color:var(--lav);color:var(--lav)}
+
+    /* section headers */
+    .sh{font-size:11px;color:var(--ov0);letter-spacing:.15em;text-transform:uppercase;margin:2rem 0 .9rem;display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace}
+    .sh::before{content:'#';color:var(--mauve)}
+    .sh::after{content:'';flex:1;height:1px;background:var(--s0)}
+
+    /* summary */
+    .summary{font-size:13px;color:var(--sub1);line-height:1.85;border-left:2px solid var(--mauve);padding-left:1rem}
+
+    /* skills */
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:8px}
+    .skill-group{background:var(--mantle);border:1px solid var(--s0);border-radius:8px;padding:10px 12px}
+    .skill-label{font-size:10px;color:var(--ov0);font-family:'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+    .skill-pills{display:flex;flex-wrap:wrap;gap:4px}
+    .pill{font-size:11px;padding:2px 7px;border-radius:4px;background:var(--s0);color:var(--sub0);border:1px solid var(--s1)}
+
+    /* experience timeline */
+    .job{display:flex;gap:12px;margin-bottom:1.25rem}
+    .job-line{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+    .job-dot{width:9px;height:9px;border-radius:50%;background:var(--s0);border:2px solid var(--mauve);margin-top:5px;flex-shrink:0}
+    .job-track{flex:1;width:1px;background:var(--s0);margin-top:4px}
+    .job-body{flex:1;padding-bottom:1.25rem}
+    .job-top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px;margin-bottom:2px}
+    .job-title{font-size:14px;font-weight:500;color:var(--text)}
+    .job-date{font-size:11px;color:var(--ov0);font-family:'JetBrains Mono',monospace}
+    .job-co{font-size:12px;color:var(--ov2);font-family:'JetBrains Mono',monospace;margin-bottom:7px}
+    .job-bullets{padding-left:1rem}
+    .job-bullets li{font-size:13px;color:var(--sub0);line-height:1.7;margin-bottom:3px}
+
+    /* projects */
+    .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+    .proj{background:var(--mantle);border:1px solid var(--s0);border-radius:8px;padding:12px 14px;text-decoration:none;display:block;transition:border-color .2s}
+    .proj:hover{border-color:var(--s2)}
+    .proj-name{font-size:13px;font-weight:500;color:var(--lav);margin-bottom:4px;display:flex;align-items:center;gap:6px}
+    .proj-desc{font-size:12px;color:var(--sub0);line-height:1.6}
+    .proj-lang{font-size:11px;color:var(--ov0);margin-top:6px;font-family:'JetBrains Mono',monospace}
+
+    /* certs */
+    .certs{display:flex;flex-direction:column;gap:6px}
+    .cert{display:flex;align-items:center;gap:10px;background:var(--mantle);border:1px solid var(--s0);border-radius:8px;padding:10px 12px}
+    .cert-icon{width:30px;height:30px;border-radius:6px;background:var(--s0);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;color:var(--ov2)}
+    .cert-name{font-size:13px;font-weight:500;color:var(--text)}
+    .cert-sub{font-size:11px;color:var(--ov0);font-family:'JetBrains Mono',monospace}
+    .cert-badge{margin-left:auto;font-size:10px;padding:2px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace;white-space:nowrap}
+    .badge-green{background:rgba(166,227,161,.12);color:var(--green);border:1px solid rgba(166,227,161,.25)}
+    .badge-yellow{background:rgba(249,226,175,.12);color:var(--yellow);border:1px solid rgba(249,226,175,.25)}
+
+    /* achievements */
+    .achieve{background:var(--mantle);border:1px solid var(--s0);border-radius:8px;padding:12px 14px;display:flex;gap:12px;align-items:flex-start;margin-bottom:8px}
+    .achieve-icon{font-size:18px;flex-shrink:0;margin-top:2px}
+    .achieve-title{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px}
+    .achieve-desc{font-size:12px;color:var(--sub0);line-height:1.65}
+
+    /* contact */
+    .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+    .contact-card{background:var(--mantle);border:1px solid var(--s0);border-radius:8px;padding:12px 14px;text-decoration:none;display:flex;align-items:center;gap:10px;transition:border-color .2s}
+    .contact-card:hover{border-color:var(--lav)}
+    .contact-icon{width:30px;height:30px;border-radius:6px;background:var(--s0);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;color:var(--ov2)}
+    .contact-name{font-size:12px;font-weight:500;color:var(--text)}
+    .contact-val{font-size:11px;color:var(--ov0);font-family:'JetBrains Mono',monospace}
+
+    /* continuing ed */
+    .edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px}
+    .edu-item{background:var(--mantle);border:1px solid var(--s0);border-radius:6px;padding:8px 12px;font-size:12px;color:var(--sub0);display:flex;align-items:center;gap:8px}
+    .edu-item i{font-size:13px;color:var(--ov0)}
+
+    /* footer */
+    .divider{height:1px;background:var(--s0);margin:2.5rem 0 1.5rem}
+    .footer{font-size:11px;color:var(--ov0);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-family:'JetBrains Mono',monospace}
+    .footer a{color:var(--mauve);text-decoration:none}
+    .footer a:hover{color:var(--lav)}
+
+    @media(max-width:480px){
+      .wrap{padding:1.5rem 1rem 3rem}
+      .header{flex-direction:column}
+      .header-right{align-items:flex-start}
+      .proj-grid,.contact-grid,.skills-grid,.edu-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+
+<main class="wrap">
+
+  <header class="header">
+    <div class="avatar">
+      <img src="avatar.png" alt="Mitchell Berg">
+    </div>
+    <div class="header-mid">
+      <div class="name">Mitchell Berg</div>
+      <div class="role">Linux Systems Administrator · IT Operations · Team Lead</div>
+      <div class="contact-row">
+        <a href="tel:8475029089"><i class="ti ti-phone" aria-hidden="true" style="font-size:13px"></i>(847) 502-9089</a>
+        <a href="mailto:locallyhosted@duck.com"><i class="ti ti-mail" aria-hidden="true" style="font-size:13px"></i>locallyhosted@duck.com</a>
+        <a href="https://linkedin.com/in/mitchell-b-291526214/" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin" aria-hidden="true" style="font-size:13px"></i>LinkedIn</a>
+        <a href="https://github.com/Naftaliro" target="_blank" rel="noopener"><i class="ti ti-brand-github" aria-hidden="true" style="font-size:13px"></i>GitHub</a>
+        <a href="#"><i class="ti ti-map-pin" aria-hidden="true" style="font-size:13px"></i>Arlington Heights, IL</a>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="avail"><div class="avail-dot"></div>open to work</div>
+      <a class="dl-btn" href="resume.pdf" download><i class="ti ti-download" aria-hidden="true" style="font-size:13px"></i>resume.pdf</a>
+    </div>
+  </header>
+
+  <section aria-labelledby="summary-heading">
+    <div class="sh" id="summary-heading">summary</div>
+    <div class="summary">IT professional with 3+ years of hands-on experience leading technical teams, administering device management systems, and automating operational workflows through scripting. Proficient across Linux distributions — Fedora, Arch, and Debian/Ubuntu — with practical experience in Bash and Python, network configuration, and endpoint management. Proven track record managing a team of 3–5 technicians across a high-volume repair environment. Actively pursuing LPIC-1. Seeking a junior systems administrator or IT operations role.</div>
+  </section>
+
+  <section aria-labelledby="skills-heading">
+    <div class="sh" id="skills-heading">skills</div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-label">operating systems</div>
+        <div class="skill-pills">
+          <span class="pill">Linux</span><span class="pill">Fedora</span><span class="pill">Arch</span><span class="pill">Debian</span><span class="pill">Ubuntu</span><span class="pill">macOS</span><span class="pill">Windows</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-label">scripting & automation</div>
+        <div class="skill-pills">
+          <span class="pill">Bash</span><span class="pill">Python</span><span class="pill">PowerShell</span><span class="pill">Git</span><span class="pill">GitHub</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-label">systems & infra</div>
+        <div class="skill-pills">
+          <span class="pill">SSH</span><span class="pill">Docker</span><span class="pill">VMware</span><span class="pill">VirtualBox</span><span class="pill">Kubernetes</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-label">networking & security</div>
+        <div class="skill-pills">
+          <span class="pill">TCP/IP</span><span class="pill">WireGuard</span><span class="pill">OpenVPN</span><span class="pill">Firewall</span><span class="pill">OSINT</span><span class="pill">Pen Testing</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-label">endpoint & MDM</div>
+        <div class="skill-pills">
+          <span class="pill">MDM Admin</span><span class="pill">Endpoint Config</span><span class="pill">MDM Bypass</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="experience-heading">
+    <div class="sh" id="experience-heading">experience</div>
+
+    <div class="job">
+      <div class="job-line"><div class="job-dot"></div><div class="job-track"></div></div>
+      <div class="job-body">
+        <div class="job-top">
+          <span class="job-title">Manager & Lead Technician</span>
+          <span class="job-date">Dec 2022 – Present</span>
+        </div>
+        <div class="job-co">uBreakiFix by Asurion · Niles, IL</div>
+        <ul class="job-bullets">
+          <li>Lead 3–5 technicians across a 15–20 repair/day environment; primary escalation for complex OS, hardware, and software issues across Windows, macOS, iOS, and Android</li>
+          <li>Developed Python and Bash scripts automating internal reporting and inventory workflows, eliminating repetitive manual tasks</li>
+          <li>Built and delivered structured onboarding programs, standardizing repair quality and reducing ramp-up time</li>
+          <li>Administer and troubleshoot MDM configurations; execute bypass procedures for locked devices using deep knowledge of mobile OS architecture</li>
+          <li>Perform OS-level diagnostics including filesystem issues, boot failures, driver conflicts, and system recovery across multiple platforms</li>
+          <li>Troubleshoot network connectivity issues including VPN configuration, firewall behavior, and protocol-level diagnostics</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-line"><div class="job-dot"></div></div>
+      <div class="job-body">
+        <div class="job-top">
+          <span class="job-title">Sales Representative</span>
+          <span class="job-date">Sep 2018 – Dec 2021</span>
+        </div>
+        <div class="job-co">Preferred Vendors Inc · Schaumburg, IL</div>
+        <ul class="job-bullets">
+          <li>Managed territory sales using CRM platforms, consistently exceeding performance targets through structured outreach and account management</li>
+          <li>Developed strong technical communication skills across in-person and remote client interactions</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="projects-heading">
+    <div class="sh" id="projects-heading">open source projects</div>
+    <div class="proj-grid">
+      <a class="proj" href="https://github.com/Naftaliro/first-steps" target="_blank" rel="noopener">
+        <div class="proj-name"><i class="ti ti-rocket" aria-hidden="true" style="font-size:14px"></i>first-steps</div>
+        <div class="proj-desc">GTK4 + LibAdwaita onboarding wizard for Zorin OS 18 and Ubuntu. Guides new Linux users through full setup without a terminal.</div>
+        <div class="proj-lang">Python · GTK4 · LibAdwaita</div>
+      </a>
+      <a class="proj" href="https://github.com/Naftaliro/gnome-theme-switcher" target="_blank" rel="noopener">
+        <div class="proj-name"><i class="ti ti-adjustments" aria-hidden="true" style="font-size:14px"></i>gnome-theme-switcher</div>
+        <div class="proj-desc">Terminal TUI for switching system-wide GNOME themes. Zero external dependencies, 9 built-in themes, full custom support.</div>
+        <div class="proj-lang">Python</div>
+      </a>
+      <a class="proj" href="https://github.com/Naftaliro/zorinos-gnome-themes" target="_blank" rel="noopener">
+        <div class="proj-name"><i class="ti ti-palette" aria-hidden="true" style="font-size:14px"></i>zorinos-gnome-themes</div>
+        <div class="proj-desc">One-liner GNOME theme installation scripts for Zorin OS 18 and Ubuntu, including macOS and Windows theme ports.</div>
+        <div class="proj-lang">Shell</div>
+      </a>
+    </div>
+  </section>
+
+  <section aria-labelledby="certs-heading">
+    <div class="sh" id="certs-heading">certifications & education</div>
+    <div class="certs">
+      <div class="cert">
+        <div class="cert-icon"><i class="ti ti-certificate" aria-hidden="true"></i></div>
+        <div>
+          <div class="cert-name">Evolve Security Certified Professional (ESCP)</div>
+          <div class="cert-sub">Evolve Security Academy, Chicago · 400+ hours · 2022–Present</div>
+        </div>
+        <span class="cert-badge badge-green">active</span>
+      </div>
+      <div class="cert">
+        <div class="cert-icon"><i class="ti ti-certificate" aria-hidden="true"></i></div>
+        <div>
+          <div class="cert-name">LPIC-1 — Linux Professional Institute</div>
+          <div class="cert-sub">Actively studying</div>
+        </div>
+        <span class="cert-badge badge-yellow">in progress</span>
+      </div>
+      <div class="cert">
+        <div class="cert-icon"><i class="ti ti-school" aria-hidden="true"></i></div>
+        <div>
+          <div class="cert-name">Buffalo Grove High School</div>
+          <div class="cert-sub">Graduated 2021</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="edu-heading">
+    <div class="sh" id="edu-heading">continuing education</div>
+    <div class="edu-grid">
+      <div class="edu-item"><i class="ti ti-book" aria-hidden="true"></i>Linux System Administration — Linux Academy</div>
+      <div class="edu-item"><i class="ti ti-book" aria-hidden="true"></i>Python for System Administration — edX</div>
+      <div class="edu-item"><i class="ti ti-book" aria-hidden="true"></i>Docker & Kubernetes Fundamentals — Udemy</div>
+      <div class="edu-item"><i class="ti ti-book" aria-hidden="true"></i>Ansible for DevOps — Pluralsight</div>
+    </div>
+  </section>
+
+  <section aria-labelledby="achieve-heading">
+    <div class="sh" id="achieve-heading">achievements</div>
+    <div class="achieve">
+      <div class="achieve-icon"><i class="ti ti-trophy" aria-hidden="true" style="font-size:18px;color:var(--yellow)"></i></div>
+      <div>
+        <div class="achieve-title">PicoCTF 2019 — Top 30 Global Finish</div>
+        <div class="achieve-desc">Placed top 30 worldwide in Carnegie Mellon University's annual cybersecurity competition. Applied skills in reverse engineering, cryptography, web exploitation, and binary analysis.</div>
+      </div>
+    </div>
+    <div class="achieve">
+      <div class="achieve-icon"><i class="ti ti-language" aria-hidden="true" style="font-size:18px;color:var(--sky)"></i></div>
+      <div>
+        <div class="achieve-title">Languages</div>
+        <div class="achieve-desc">English — Native &nbsp;·&nbsp; Russian — Basic Conversational</div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="contact-heading">
+    <div class="sh" id="contact-heading">contact</div>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:locallyhosted@duck.com">
+        <div class="contact-icon"><i class="ti ti-mail" aria-hidden="true"></i></div>
+        <div><div class="contact-name">email</div><div class="contact-val">locallyhosted@duck.com</div></div>
+      </a>
+      <a class="contact-card" href="https://linkedin.com/in/mitchell-b-291526214/" target="_blank" rel="noopener">
+        <div class="contact-icon"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></div>
+        <div><div class="contact-name">linkedin</div><div class="contact-val">mitchell-b</div></div>
+      </a>
+      <a class="contact-card" href="https://github.com/Naftaliro" target="_blank" rel="noopener">
+        <div class="contact-icon"><i class="ti ti-brand-github" aria-hidden="true"></i></div>
+        <div><div class="contact-name">github</div><div class="contact-val">Naftaliro</div></div>
+      </a>
+      <a class="contact-card" href="resume.pdf" download>
+        <div class="contact-icon"><i class="ti ti-file-text" aria-hidden="true"></i></div>
+        <div><div class="contact-name">resume</div><div class="contact-val">download PDF</div></div>
+      </a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <footer class="footer">
+    <div>© 2026 Mitchell Berg · Arlington Heights, IL</div>
+    <div style="display:flex;gap:12px">
+      <a href="https://3hz.dev">3hz.dev</a>
+      <a href="https://naftaliro.dev">naftaliro.dev</a>
+    </div>
+  </footer>
+
+</main>
+</body>
+</html>
