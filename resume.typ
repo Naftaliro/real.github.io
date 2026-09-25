@@ -23,7 +23,7 @@
 
 == Professional Summary
 
-Linux-focused IT support professional with 3+ years of experience leading technical operations, resolving complex OS, hardware, software, and connectivity issues, and automating workflows with Bash and Python. Incoming Level II Support professional focused on custom-built systems and HPC environments; continuing LPIC-1 study.
+Linux-focused IT support professional with 3+ years of experience leading technical operations, resolving complex OS, hardware, software, and connectivity issues, and automating workflows with Bash and Python. Level II Support at Ace Computers, focused on custom-built systems and HPC environments; continuing LPIC-1 study.
 
 == Technical Skills
 
@@ -34,12 +34,12 @@ Linux-focused IT support professional with 3+ years of experience leading techni
 == Professional Experience
 
 #work(
-  title: "Incoming Level II Support",
+  title: "Level II Support",
   location: "Des Plaines, IL",
   company: "Ace Computers",
-  dates: "Starts Aug 2026",
+  dates: dates-helper(start-date: "Aug 2026", end-date: "Present"),
 )
-- Incoming Tier-2 technical-support role for custom-built systems and HPC environments, centered on diagnostics, escalation handling, and Linux/Windows system support.
+- Tier-2 technical support for custom-built systems and HPC environments: diagnostics, escalation handling, and Linux/Windows system support.
 
 #work(
   title: "Manager & Lead Technician",
@@ -78,6 +78,6 @@ Linux-focused IT support professional with 3+ years of experience leading techni
 
 == Certifications & Recognition
 
-- *Linux Professional Institute Certification (LPIC-1)* — In Progress
-- *Evolve Security Certified Professional (ESCP)* — Evolve Security Academy, Chicago; 400+ hours; 2022–Present
-- *PicoCTF 2019* — Top 30 Global Finish; reverse engineering, cryptography, web exploitation, and binary analysis
+- *Linux Professional Institute Certification (LPIC-1)*: in progress
+- *Evolve Security Certified Professional (ESCP)*: Evolve Security Academy, Chicago; 400+ hours; 2022–Present
+- *PicoCTF 2019*: Top 30 Global Finish; reverse engineering, cryptography, web exploitation, and binary analysis
