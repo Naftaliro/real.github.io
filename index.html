@@ -112,12 +112,13 @@
     .achieve-desc{font-size:12px;color:var(--sub0);line-height:1.65}
 
     /* contact */
-    .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+    .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px}
     .contact-card{background:var(--mantle);border:1px solid var(--s0);border-radius:8px;padding:12px 14px;text-decoration:none;display:flex;align-items:center;gap:10px;transition:border-color .2s}
     .contact-card:hover{border-color:var(--lav)}
     .contact-icon{width:30px;height:30px;border-radius:6px;background:var(--s0);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;color:var(--ov2)}
     .contact-name{font-size:12px;font-weight:500;color:var(--text)}
-    .contact-val{font-size:11px;color:var(--ov0);font-family:'JetBrains Mono',monospace}
+    .contact-card>div:last-child{min-width:0}
+    .contact-val{font-size:11px;color:var(--ov0);font-family:'JetBrains Mono',monospace;overflow-wrap:anywhere}
 
     /* continuing ed */
     .edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px}
