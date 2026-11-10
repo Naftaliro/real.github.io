@@ -1,0 +1,468 @@
+/* mitchellberg.org
+   the real-name one. same catppuccin windows as 3hz.dev and naftaliro.dev, a bit more buttoned up.
+   colors: https://catppuccin.com/palette  (opens in latte if your system is light, mocha otherwise) */
+
+@font-face { font-family: "Iosevka Aile"; src: url("../fonts/aile-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Iosevka Aile"; src: url("../fonts/aile-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Iosevka Aile"; src: url("../fonts/aile-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Iosevka"; src: url("../fonts/iosevka-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Iosevka"; src: url("../fonts/iosevka-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Silkscreen"; src: url("../fonts/silkscreen-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+
+/* ── palettes ─────────────────────────────────────────── */
+
+:root, [data-flavor="mocha"] {
+  --rosewater:#f5e0dc; --flamingo:#f2cdcd; --pink:#f5c2e7; --mauve:#cba6f7; --red:#f38ba8; --maroon:#eba0ac;
+  --peach:#fab387; --yellow:#f9e2af; --green:#a6e3a1; --teal:#94e2d5; --sky:#89dceb; --sapphire:#74c7ec;
+  --blue:#89b4fa; --lavender:#b4befe; --text:#cdd6f4; --subtext1:#bac2de; --subtext0:#a6adc8;
+  --overlay2:#9399b2; --overlay1:#7f849c; --overlay0:#6c7086; --surface2:#585b70; --surface1:#45475a;
+  --surface0:#313244; --base:#1e1e2e; --mantle:#181825; --crust:#11111b;
+  color-scheme: dark;
+}
+[data-flavor="macchiato"] {
+  --rosewater:#f4dbd6; --flamingo:#f0c6c6; --pink:#f5bde6; --mauve:#c6a0f6; --red:#ed8796; --maroon:#ee99a0;
+  --peach:#f5a97f; --yellow:#eed49f; --green:#a6da95; --teal:#8bd5ca; --sky:#91d7e3; --sapphire:#7dc4e4;
+  --blue:#8aadf4; --lavender:#b7bdf8; --text:#cad3f5; --subtext1:#b8c0e0; --subtext0:#a5adcb;
+  --overlay2:#939ab7; --overlay1:#8087a2; --overlay0:#6e738d; --surface2:#5b6078; --surface1:#494d64;
+  --surface0:#363a4f; --base:#24273a; --mantle:#1e2030; --crust:#181926;
+  color-scheme: dark;
+}
+[data-flavor="frappe"] {
+  --rosewater:#f2d5cf; --flamingo:#eebebe; --pink:#f4b8e4; --mauve:#ca9ee6; --red:#e78284; --maroon:#ea999c;
+  --peach:#ef9f76; --yellow:#e5c890; --green:#a6d189; --teal:#81c8be; --sky:#99d1db; --sapphire:#85c1dc;
+  --blue:#8caaee; --lavender:#babbf1; --text:#c6d0f5; --subtext1:#b5bfe2; --subtext0:#a5adce;
+  --overlay2:#949cbb; --overlay1:#838ba7; --overlay0:#737994; --surface2:#626880; --surface1:#51576d;
+  --surface0:#414559; --base:#303446; --mantle:#292c3c; --crust:#232634;
+  color-scheme: dark;
+}
+[data-flavor="latte"] {
+  /* same deal as 3hz: latte's accents pulled darker so small text stays readable */
+  --rosewater:#974b3c; /* #dc8a78 */ --flamingo:#a24346; /* #dd7878 */ --pink:#a33389;  /* #ea76cb */
+  --mauve:#802ce4;     /* #8839ef */ --red:#c20f35;      /* #d20f39 */ --maroon:#c01935; /* #e64553 */
+  --peach:#aa4005;     /* #fe640b */ --yellow:#8a5507;   /* #df8e1d */ --green:#1f7107;  /* #40a02b */
+  --teal:#056d73;      /* #179299 */ --sky:#046993;      /* #04a5e5 */ --sapphire:#076c7c; /* #209fb5 */
+  --blue:#0b55e3;      /* #1e66f5 */ --lavender:#4755c6; /* #7287fd */
+  --text:#4c4f69; --subtext1:#5c5f77; --subtext0:#5c5f77; /* #6c6f85 */
+  --overlay2:#7c7f93; --overlay1:#8c8fa1; --overlay0:#9ca0b0; --surface2:#acb0be; --surface1:#bcc0cc;
+  --surface0:#ccd0da; --base:#eff1f5; --mantle:#e6e9ef; --crust:#dce0e8;
+  color-scheme: light;
+}
+
+/* ── knobs ────────────────────────────────────────────── */
+
+:root {
+  --page: 960px;         /* how wide the column gets */
+  --radius: 10px;
+  --border: 2px;
+  --sans: "Iosevka Aile", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Iosevka", "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --pixel: "Silkscreen", var(--mono);
+  --dim: var(--subtext0);        /* secondary text */
+  --pill: color-mix(in srgb, var(--surface0) 70%, var(--mantle));
+  --chip: var(--pill);           /* skill chips */
+  --chip-line: var(--surface1);
+  --on-accent: var(--crust);     /* text sitting on an accent color */
+  --glow: conic-gradient(from 45deg, var(--mauve), var(--lavender), var(--pink), var(--mauve));
+}
+/* in latte the pill color is the window color, so chips need their own fill and a real edge */
+:root[data-flavor="latte"] { --pill: var(--base); --chip: var(--mantle); --chip-line: var(--surface2); --on-accent: var(--base); }
+@supports not (color: color-mix(in srgb, red, blue)) {
+  :root { --pill: var(--surface0); }
+}
+
+/* ── base ─────────────────────────────────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--crust); scroll-padding-top: 16px; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text);
+}
+p, ul, ol, dl, dd, h1, h2, h3 { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: var(--mauve); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--pink); }
+:focus-visible { outline: 2px solid var(--mauve); outline-offset: 2px; border-radius: 4px; }
+::selection { background: color-mix(in srgb, var(--mauve) 35%, transparent); color: var(--text); }
+b, strong { font-weight: 700; }
+.ic { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.skip { position: absolute; left: -999px; top: 8px; z-index: 50; background: var(--mauve); color: var(--on-accent); padding: 4px 10px; border-radius: 6px; font-family: var(--mono); }
+.skip:focus { left: 8px; }
+
+/* the wallpaper sits behind everything. the 3hz prairie in the daytime (sunrise in the dark flavors) */
+#wall {
+  position: fixed; inset: 0;
+  width: 100vw; height: 100vh; height: 100lvh;
+  image-rendering: pixelated;
+  z-index: -1;
+  background: var(--crust);
+}
+
+/* ── bar ──────────────────────────────────────────────── */
+
+.bar {
+  display: flex; align-items: center; gap: 8px;
+  width: calc(100% - 20px);
+  max-width: calc(var(--page) - 20px);
+  min-height: 42px;
+  margin: 14px auto 0;
+  padding: 5px 6px;
+  font-family: var(--mono);
+  font-size: 13.5px;
+  line-height: 1.6;
+  background: var(--mantle);
+  border: var(--border) solid var(--surface0);
+  border-radius: var(--radius);
+}
+.bar a { text-decoration: none; }
+.bar-logo {
+  display: flex; align-items: center; gap: 8px;
+  height: 30px; padding: 0 10px;
+  color: var(--on-accent);
+  background: var(--mauve);
+  border-radius: 7px;
+  font-family: var(--pixel);
+  font-size: 13px;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+.bar-logo:hover { color: var(--on-accent); background: var(--lavender); }
+.bar-logo svg { width: 10px; height: 8px; fill: currentColor; shape-rendering: crispEdges; }
+
+.nav { display: flex; gap: 2px; }
+.nav a {
+  display: flex; align-items: center;
+  height: 30px; padding: 0 9px;
+  color: var(--dim);
+  border-radius: 7px;
+}
+.nav a:hover { background: var(--pill); color: var(--text); }
+
+.bar-mods { display: flex; gap: 6px; margin-left: auto; }
+.mod {
+  display: flex; align-items: center; gap: 7px;
+  height: 30px; padding: 0 11px;
+  font: inherit;
+  color: var(--subtext1);
+  background: var(--pill);
+  border: 0;
+  border-radius: 7px;
+  white-space: nowrap;
+}
+a.mod:hover { color: var(--text); background: var(--surface1); }
+.mod-flavor { color: var(--mauve); cursor: pointer; }
+.mod-flavor:hover { background: var(--surface1); }
+.mod-cv { color: var(--on-accent); background: var(--green); }
+a.mod-cv:hover { color: var(--on-accent); background: var(--teal); }
+.mod .ic { width: 15px; height: 15px; }
+.swatch { width: 11px; height: 11px; border-radius: 50%; background: conic-gradient(var(--mauve) 0 25%, var(--pink) 0 50%, var(--lavender) 0 75%, var(--blue) 0); }
+
+/* ── windows ──────────────────────────────────────────── */
+
+.page {
+  display: flex; flex-direction: column; gap: 14px;
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: 14px 10px 0;
+}
+
+.win {
+  min-width: 0;
+  background: var(--base);
+  border: var(--border) solid var(--surface0);
+  border-radius: var(--radius);
+}
+/* the header window gets the 3hz border, minus the spinning */
+.win.main {
+  border-color: transparent;
+  background: linear-gradient(var(--base), var(--base)) padding-box, var(--glow) border-box;
+}
+
+.win-bar {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 7px 18px 6px;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--dim);
+  border-bottom: 1px solid var(--surface0);
+}
+.win-bar h1, .win-bar h2, .win-title { font-size: inherit; font-weight: 400; color: var(--subtext0); }
+.win-bar b { color: var(--subtext1); margin-right: 4px; }
+.win.main .win-bar b { color: var(--mauve); }
+.win-meta { color: var(--dim); white-space: nowrap; }
+.win-body { padding: 22px 28px 26px; }
+
+/* little mono labels inside windows ("operating systems", "networking & security") */
+.label {
+  font-family: var(--mono);
+  font-size: 13px; font-weight: 400;
+  color: var(--dim);
+  margin-bottom: 8px;
+}
+.label::before { content: "# "; color: var(--mauve); }
+
+/* ── hello ────────────────────────────────────────────── */
+
+.hello { display: flex; gap: 24px; align-items: flex-start; }
+.hello-pic {
+  display: block; flex-shrink: 0;
+  width: 112px; height: 112px;
+  border-radius: 10px;
+}
+.hello h1 {
+  font-size: 2.2rem;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+.role { margin-top: 4px; font-size: 1.05rem; color: var(--subtext1); }
+.facts {
+  display: flex; flex-wrap: wrap; gap: 4px 18px;
+  margin-top: 10px;
+  font-family: var(--mono);
+  font-size: 13.5px;
+  color: var(--dim);
+}
+.facts li { display: flex; align-items: center; gap: 6px; }
+.facts .ic { width: 15px; height: 15px; color: var(--mauve); }
+.now-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+.facts .now { color: var(--green); }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 5px 13px;
+  font: inherit; font-family: var(--mono); font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--on-accent);
+  background: var(--mauve);
+  border: 0; border-radius: 7px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover { background: var(--lavender); color: var(--on-accent); }
+.btn .ic { width: 15px; height: 15px; }
+.btn.ghost { color: var(--subtext1); background: var(--pill); border: 1px solid var(--surface1); padding: 4px 12px; }
+.btn.ghost:hover { color: var(--text); background: var(--surface1); }
+
+/* ── summary ──────────────────────────────────────────── */
+
+.summary { max-width: 72ch; color: var(--subtext1); }
+
+/* ── skills ───────────────────────────────────────────── */
+
+.skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 32px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips li {
+  padding: 0 10px;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 24px;
+  color: var(--subtext1);
+  background: var(--chip);
+  border: 1px solid var(--chip-line);
+  border-radius: 999px;
+}
+
+/* ── experience ───────────────────────────────────────── */
+
+.jobs > li {
+  display: grid;
+  grid-template-columns: 17ch minmax(0, 1fr);
+  column-gap: 20px;
+  padding: 18px 0;
+}
+.jobs > li + li { border-top: 1px dashed var(--surface1); }
+.jobs > li:first-child { padding-top: 0; }
+.jobs > li:last-child { padding-bottom: 0; }
+.job-date { font-family: var(--mono); font-size: 13.5px; color: var(--dim); padding-top: 3px; white-space: nowrap; }
+.job-title { font-size: 1.12rem; line-height: 1.35; font-weight: 700; }
+.job-co { font-family: var(--mono); font-size: 13.5px; color: var(--teal); margin-top: 2px; }
+.bullets { margin-top: 10px; padding-left: 1.3em; max-width: 78ch; }
+.bullets li { position: relative; color: var(--subtext1); }
+.bullets li + li { margin-top: 6px; }
+.bullets li::before { content: "-"; position: absolute; left: -1.1em; font-family: var(--mono); color: var(--teal); }
+
+/* ── projects ─────────────────────────────────────────── */
+
+.projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.projects > li { display: flex; }
+.proj {
+  flex: 1;
+  display: flex; flex-direction: column;
+  padding: 14px 16px;
+  color: var(--text);
+  text-decoration: none;
+  background: var(--mantle);
+  border: 1px solid var(--surface0);
+  border-radius: 8px;
+}
+.proj:hover { color: var(--text); border-color: var(--mauve); }
+.proj-name { display: flex; align-items: center; gap: 8px; font-weight: 700; }
+.proj-name .ic { color: var(--mauve); }
+.proj:hover .proj-name span { text-decoration: underline; text-underline-offset: 3px; }
+.proj-desc { margin-top: 6px; font-size: 15px; color: var(--subtext1); }
+.proj-stack { margin-top: auto; padding-top: 10px; font-family: var(--mono); font-size: 12.5px; color: var(--dim); }
+
+/* ── certs, courses, achievements ─────────────────────── */
+
+.rows > li { display: flex; align-items: flex-start; gap: 14px; }
+.rows > li + li { margin-top: 14px; }
+.row-ic {
+  display: grid; place-items: center; flex-shrink: 0;
+  width: 34px; height: 34px;
+  color: var(--mauve);
+  background: var(--pill);
+  border-radius: 8px;
+}
+.row-ic .ic { width: 18px; height: 18px; }
+.row-ic.gold { color: var(--yellow); }
+.row-ic.sky { color: var(--sky); }
+.row-main { flex: 1; min-width: 0; }
+.row-title { font-weight: 700; }
+.row-sub { font-size: 15px; color: var(--subtext1); }
+.badge {
+  flex-shrink: 0;
+  margin-top: 3px;
+  padding: 0 8px;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 20px;
+  border-radius: 4px;
+  color: var(--on-accent);
+}
+.badge.done { background: var(--green); }
+.badge.wip { background: var(--yellow); }
+
+.courses { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 28px; }
+.courses li { display: flex; align-items: center; gap: 10px; color: var(--subtext1); }
+.courses .ic { color: var(--teal); width: 17px; height: 17px; }
+
+.sub-head { margin-top: 26px; }
+
+/* ── contact (the rofi list from 3hz.dev) ─────────────── */
+
+.rofi-list { display: flex; flex-direction: column; gap: 2px; font-family: var(--mono); font-size: 14px; }
+.rofi-list a {
+  display: flex; align-items: center; gap: 12px;
+  padding: 9px 12px;
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 7px;
+}
+.rofi-list .ic { color: var(--overlay2); }
+.rofi-list .r-desc { margin-left: auto; color: var(--dim); text-align: right; overflow-wrap: anywhere; }
+.rofi-list li:first-child a,
+.rofi-list a:hover, .rofi-list a:focus-visible { background: color-mix(in srgb, var(--surface0) 80%, var(--base)); }
+.rofi-list li:first-child a .ic,
+.rofi-list a:hover .ic, .rofi-list a:focus-visible .ic { color: var(--mauve); }
+/* the selected row's description brightens like rofi's, and keeps AA on the highlight */
+.rofi-list li:first-child a .r-desc,
+.rofi-list a:hover .r-desc, .rofi-list a:focus-visible .r-desc { color: var(--text); }
+
+/* ── footer ───────────────────────────────────────────── */
+
+.foot {
+  max-width: var(--page);
+  margin: 26px auto 0;
+  padding: 0 16px 90px;
+  font-family: var(--mono);
+  font-size: 13px;
+  text-align: center;
+  color: var(--dim);
+}
+.foot a { color: var(--subtext1); }
+.foot a:hover { color: var(--mauve); }
+.foot p + p { margin-top: 4px; }
+
+/* 404 */
+.lost h1 { font-size: 1.6rem; line-height: 1.2; margin-bottom: 8px; }
+.lost p { color: var(--subtext1); margin-bottom: 18px; }
+
+/* ── small screens ────────────────────────────────────── */
+
+@media (max-width: 720px) {
+  .bar { width: calc(100% - 16px); margin-top: 8px; flex-wrap: wrap; }
+  .page { padding: 8px 8px 0; gap: 10px; }
+  .win-bar { padding: 7px 14px 6px; }
+  .win-body { padding: 18px 16px 22px; }
+  .hello { flex-direction: column; gap: 14px; }
+  .hello-pic { width: 80px; height: 80px; }
+  .hello h1 { font-size: 1.85rem; }
+  .skills, .projects, .courses { grid-template-columns: minmax(0, 1fr); }
+  .jobs > li { grid-template-columns: minmax(0, 1fr); }
+  .job-date { padding: 0 0 2px; }
+  .rofi-list a { flex-wrap: wrap; row-gap: 0; }
+}
+@media (max-width: 600px) {
+  .nav { order: 3; width: 100%; justify-content: space-between; border-top: 1px solid var(--surface0); padding-top: 5px; }
+  .nav a { height: 40px; }
+  .mod-flavor .flavor-name { display: none; }
+}
+@media (max-width: 380px) {
+  .nav a { padding: 0 6px; }
+  .bar-logo span { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+}
+
+/* ── print: comes out as a plain two-page résumé ──────── */
+
+@media print {
+  @page { size: letter; margin: 13mm 14mm; }
+  /* the contact window repeats the contact line under the name, and "download PDF" means nothing on paper */
+  #wall, .skip, .bar, .actions, .foot, .win-meta, .win-bar [aria-hidden="true"], #contact { display: none !important; }
+  .summary, .bullets { max-width: none; }
+  html, body { background: #fff !important; }
+  body { font-size: 10pt; line-height: 1.45; color: #000; }
+  * { color: #000 !important; background: none !important; box-shadow: none !important; }
+  a { text-decoration: none; }
+  .page { max-width: none; padding: 0; gap: 9pt; }
+  .win, .win.main { border: 0; border-radius: 0; break-inside: auto; }
+  .win.main .win-bar { display: none; }
+  .win-bar { padding: 0 0 2pt; border-bottom: 1px solid #000; }
+  /* the screen reader heading becomes the printed heading */
+  .win-bar .sr-only { position: static; width: auto; height: auto; margin: 0; overflow: visible; clip: auto; white-space: normal; font-family: var(--sans); font-size: 10.5pt; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+  .win-body { padding: 5pt 0 0; }
+  .hello { gap: 14pt; align-items: center; }
+  .hello-pic { width: 58pt; height: 58pt; }
+  .hello h1 { font-size: 20pt; }
+  .facts { font-size: 9pt; margin-top: 4pt; }
+  .facts .ic, .now-dot { display: none; }
+  .print-contact { display: flex !important; flex-wrap: wrap; gap: 0 14pt; margin-top: 3pt; font-family: var(--mono); font-size: 9pt; }
+  .skills { gap: 4pt 18pt; }
+  .label { margin-bottom: 2pt; font-size: 8.5pt; }
+  .label::before { content: none; }
+  .chips { gap: 3pt; }
+  .chips li { line-height: 1.5; padding: 0 5pt; font-size: 8.5pt; border: 1px solid #999; }
+  .jobs > li { padding: 6pt 0; grid-template-columns: 13ch minmax(0, 1fr); break-inside: avoid; }
+  .jobs > li + li { border-top: 1px dotted #999; }
+  .job-date, .job-co { font-size: 9pt; }
+  .job-title { font-size: 10.5pt; }
+  .bullets { margin-top: 3pt; }
+  .bullets li + li { margin-top: 1pt; }
+  .projects { gap: 5pt 14pt; }
+  .proj { padding: 0; border: 0; break-inside: avoid; }
+  .proj-name .ic, .row-ic, .courses .ic { display: none; }
+  .proj-desc { font-size: 9.5pt; margin-top: 1pt; }
+  .proj-stack { padding-top: 1pt; font-size: 8.5pt; }
+  .rows > li + li { margin-top: 5pt; }
+  .row-sub { font-size: 9.5pt; }
+  .badge { border: 1px solid #000; font-size: 8pt; line-height: 1.5; }
+  .courses { gap: 1pt 14pt; }
+  .sub-head { margin-top: 8pt; }
+  .rofi-list { font-size: 9.5pt; }
+  .rofi-list a { padding: 0; }
+  .rofi-list .ic { display: none; }
+  .rofi-list .r-desc { margin-left: 8pt; text-align: left; }
+}
+.print-contact { display: none; }

@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mitchell Berg · Level II Support</title>
   <meta name="description" content="Mitchell Berg, Level II Support at Ace Computers. Linux systems, HPC environments, and IT operations. Based in Arlington Heights, IL.">
+  <link rel="canonical" href="https://mitchellberg.org/">
+  <meta name="theme-color" content="#1e1e2e">
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="mitchellberg.org">
   <meta property="og:title" content="Mitchell Berg · Level II Support">
   <meta property="og:description" content="Linux-focused IT support professional with 3+ years of technical operations experience. Level II Support at Ace Computers.">
   <meta property="og:image" content="https://mitchellberg.org/assets/img/avatar-512.jpg">
   <meta property="og:url" content="https://mitchellberg.org/">
-  <meta name="theme-color" content="#1e1e2e">
-  <link rel="canonical" href="https://mitchellberg.org/">
-  <title>Mitchell Berg · Level II Support</title>
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/aile-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- pick the flavor before first paint: your saved pick, else latte if the system is light, else mocha -->
+  <script>
+    var f = null;
+    try { f = localStorage.getItem('flavor'); } catch (e) {}
+    if (!f && window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches) f = 'latte';
+    if (f) document.documentElement.dataset.flavor = f;
+  </script>
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-C80S6SM7N3"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -18,372 +34,275 @@
     gtag('js', new Date());
     gtag('config', 'G-C80S6SM7N3');
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Syne:wght@700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --bg:#1e1e2e;--mantle:#181825;--crust:#11111b;
-      --s0:#313244;--s1:#45475a;--s2:#585b70;
-      --ov0:#6c7086;--ov2:#9399b2;
-      --text:#cdd6f4;--sub1:#bac2de;--sub0:#a6adc8;
-      --lav:#b4befe;--mauve:#cba6f7;--green:#a6e3a1;
-      --sky:#89dceb;--peach:#fab387;--yellow:#f9e2af;
-      --red:#f38ba8;--pink:#f5c2e7;
-    }
-    html{scroll-behavior:smooth}
-    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.7;min-height:100vh}
 
-    .orb{position:fixed;border-radius:50%;filter:blur(100px);opacity:.07;pointer-events:none;z-index:0}
-    .o1{width:450px;height:450px;background:var(--mauve);top:-150px;right:-100px}
-    .o2{width:350px;height:350px;background:var(--lav);bottom:-100px;left:-100px}
-
-    .wrap{max-width:700px;margin:0 auto;padding:3rem 1.5rem 5rem;position:relative;z-index:1}
-
-    /* header */
-    .header{display:flex;align-items:flex-start;gap:1.25rem;padding-bottom:1.75rem;border-bottom:1px solid var(--s0);margin-bottom:2rem;flex-wrap:wrap}
-    .avatar{width:60px;height:60px;border-radius:50%;border:2px solid var(--s1);overflow:hidden;background:var(--s0);flex-shrink:0}
-    .avatar img{width:100%;height:100%;object-fit:cover;object-position:center top}
-    .header-mid{flex:1;min-width:200px}
-    .name{font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:800;color:var(--text);line-height:1.1;margin-bottom:.3rem}
-    .role{font-size:13px;color:var(--ov2);font-family:'JetBrains Mono',monospace;margin-bottom:.75rem}
-    .contact-row{display:flex;flex-wrap:wrap;gap:10px}
-    .contact-row a{font-size:12px;color:var(--sub0);text-decoration:none;display:flex;align-items:center;gap:4px;transition:color .15s}
-    .contact-row a:hover{color:var(--lav)}
-    .header-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0}
-    .avail{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--green);font-family:'JetBrains Mono',monospace}
-    .avail-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-    .dl-btn{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--sub0);background:var(--mantle);border:1px solid var(--s1);border-radius:6px;padding:5px 12px;text-decoration:none;font-family:'JetBrains Mono',monospace;transition:border-color .15s,color .15s}
-    .dl-btn:hover{border-color:var(--lav);color:var(--lav)}
-
-    /* section headers */
-    .sh{font-size:11px;color:var(--ov0);letter-spacing:.15em;text-transform:uppercase;margin:2rem 0 .9rem;display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace}
-    .sh::before{content:'#';color:var(--mauve)}
-    .sh::after{content:'';flex:1;height:1px;background:var(--s0)}
-
-    /* summary */
-    .summary{font-size:13px;color:var(--sub1);line-height:1.85;border-left:2px solid var(--mauve);padding-left:1rem}
-
-    /* skills */
-    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:8px}
-    .skill-group{background:var(--mantle);border:1px solid var(--s0);border-radius:8px;padding:10px 12px}
-    .skill-label{font-size:10px;color:var(--ov0);font-family:'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
-    .skill-pills{display:flex;flex-wrap:wrap;gap:4px}
-    .pill{font-size:11px;padding:2px 7px;border-radius:4px;background:var(--s0);color:var(--sub0);border:1px solid var(--s1)}
-
-    /* experience timeline */
-    .job{display:flex;gap:12px;margin-bottom:1.25rem}
-    .job-line{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
-    .job-dot{width:9px;height:9px;border-radius:50%;background:var(--s0);border:2px solid var(--mauve);margin-top:5px;flex-shrink:0}
-    .job-track{flex:1;width:1px;background:var(--s0);margin-top:4px}
-    .job-body{flex:1;padding-bottom:1.25rem}
-    .job-top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px;margin-bottom:2px}
-    .job-title{font-size:14px;font-weight:500;color:var(--text)}
-    .job-date{font-size:11px;color:var(--ov0);font-family:'JetBrains Mono',monospace}
-    .job-co{font-size:12px;color:var(--ov2);font-family:'JetBrains Mono',monospace;margin-bottom:7px}
-    .job-bullets{padding-left:1rem}
-    .job-bullets li{font-size:13px;color:var(--sub0);line-height:1.7;margin-bottom:3px}
-
-    /* projects */
-    .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
-    .proj{background:var(--mantle);border:1px solid var(--s0);border-radius:8px;padding:12px 14px;text-decoration:none;display:block;transition:border-color .2s}
-    .proj:hover{border-color:var(--s2)}
-    .proj-name{font-size:13px;font-weight:500;color:var(--lav);margin-bottom:4px;display:flex;align-items:center;gap:6px}
-    .proj-desc{font-size:12px;color:var(--sub0);line-height:1.6}
-    .proj-lang{font-size:11px;color:var(--ov0);margin-top:6px;font-family:'JetBrains Mono',monospace}
-
-    /* certs */
-    .certs{display:flex;flex-direction:column;gap:6px}
-    .cert{display:flex;align-items:center;gap:10px;background:var(--mantle);border:1px solid var(--s0);border-radius:8px;padding:10px 12px}
-    .cert-icon{width:30px;height:30px;border-radius:6px;background:var(--s0);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;color:var(--ov2)}
-    .cert-name{font-size:13px;font-weight:500;color:var(--text)}
-    .cert-sub{font-size:11px;color:var(--ov0);font-family:'JetBrains Mono',monospace}
-    .cert-badge{margin-left:auto;font-size:10px;padding:2px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace;white-space:nowrap}
-    .badge-green{background:rgba(166,227,161,.12);color:var(--green);border:1px solid rgba(166,227,161,.25)}
-    .badge-yellow{background:rgba(249,226,175,.12);color:var(--yellow);border:1px solid rgba(249,226,175,.25)}
-
-    /* achievements */
-    .achieve{background:var(--mantle);border:1px solid var(--s0);border-radius:8px;padding:12px 14px;display:flex;gap:12px;align-items:flex-start;margin-bottom:8px}
-    .achieve-icon{font-size:18px;flex-shrink:0;margin-top:2px}
-    .achieve-title{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px}
-    .achieve-desc{font-size:12px;color:var(--sub0);line-height:1.65}
-
-    /* contact */
-    .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px}
-    .contact-card{background:var(--mantle);border:1px solid var(--s0);border-radius:8px;padding:12px 14px;text-decoration:none;display:flex;align-items:center;gap:10px;transition:border-color .2s}
-    .contact-card:hover{border-color:var(--lav)}
-    .contact-icon{width:30px;height:30px;border-radius:6px;background:var(--s0);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;color:var(--ov2)}
-    .contact-name{font-size:12px;font-weight:500;color:var(--text)}
-    .contact-card>div:last-child{min-width:0}
-    .contact-val{font-size:11px;color:var(--ov0);font-family:'JetBrains Mono',monospace;overflow-wrap:anywhere}
-
-    /* continuing ed */
-    .edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px}
-    .edu-item{background:var(--mantle);border:1px solid var(--s0);border-radius:6px;padding:8px 12px;font-size:12px;color:var(--sub0);display:flex;align-items:center;gap:8px}
-    .edu-item i{font-size:13px;color:var(--ov0)}
-
-    /* footer */
-    .divider{height:1px;background:var(--s0);margin:2.5rem 0 1.5rem}
-    .footer{font-size:11px;color:var(--ov0);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-family:'JetBrains Mono',monospace}
-    .footer a{color:var(--mauve);text-decoration:none}
-    .footer a:hover{color:var(--lav)}
-
-    @media(max-width:480px){
-      .wrap{padding:1.5rem 1rem 3rem}
-      .header{flex-direction:column}
-      .header-right{align-items:flex-start}
-      .proj-grid,.contact-grid,.skills-grid,.edu-grid{grid-template-columns:1fr}
-    }
-  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mitchell Berg",
+    "url": "https://mitchellberg.org/",
+    "image": "https://mitchellberg.org/assets/img/avatar-512.jpg",
+    "jobTitle": "Level II Support",
+    "worksFor": { "@type": "Organization", "name": "Ace Computers" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Arlington Heights", "addressRegion": "IL", "addressCountry": "US" },
+    "email": "mailto:mitchell@mitchellberg.org",
+    "sameAs": ["https://github.com/Naftaliro", "https://www.linkedin.com/in/mitchellryanberg/", "https://3hz.dev/"]
+  }
+  </script>
 </head>
 <body>
 
-<div class="orb o1"></div>
-<div class="orb o2"></div>
+<!-- icons (tabler, trimmed) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" /> <path d="M3 7l9 6l9 -6" /></symbol>
+    <symbol id="i-brand-linkedin" viewBox="0 0 24 24"><path d="M8 11v5" /> <path d="M8 8v.01" /> <path d="M12 16v-5" /> <path d="M16 16v-3a2 2 0 1 0 -4 0" /> <path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4l0 -10" /></symbol>
+    <symbol id="i-brand-github" viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></symbol>
+    <symbol id="i-file-download" viewBox="0 0 24 24"><path d="M14 3v4a1 1 0 0 0 1 1h4" /> <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" /> <path d="M12 17v-6" /> <path d="M9.5 14.5l2.5 2.5l2.5 -2.5" /></symbol>
+    <symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /> <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0" /></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24"><path d="M3 7a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-2" /> <path d="M3 15a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3l0 -2" /> <path d="M7 8l0 .01" /> <path d="M7 16l0 .01" /></symbol>
+    <symbol id="i-alarm" viewBox="0 0 24 24"><path d="M5 13a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /> <path d="M12 10l0 3l2 0" /> <path d="M7 4l-2.75 2" /> <path d="M17 4l2.75 2" /></symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3 -5a9 9 0 0 0 6 -8a3 3 0 0 0 -3 -3a9 9 0 0 0 -8 6a6 6 0 0 0 -5 3" /> <path d="M7 14a6 6 0 0 0 -3 6a6 6 0 0 0 6 -3" /> <path d="M14 9a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></symbol>
+    <symbol id="i-adjustments" viewBox="0 0 24 24"><path d="M4 10a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /> <path d="M6 4v4" /> <path d="M6 12v8" /> <path d="M10 16a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /> <path d="M12 4v10" /> <path d="M12 18v2" /> <path d="M16 7a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /> <path d="M18 4v1" /> <path d="M18 9v11" /></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25" /> <path d="M7.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /> <path d="M11.5 7.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /> <path d="M15.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></symbol>
+    <symbol id="i-brand-firefox" viewBox="0 0 24 24"><path d="M4.028 7.82a9 9 0 1 0 12.823 -3.4c-1.636 -1.02 -3.064 -1.02 -4.851 -1.02h-1.647" /> <path d="M4.914 9.485c-1.756 -1.569 -.805 -5.38 .109 -6.17c.086 .896 .585 1.208 1.111 1.685c.88 -.275 1.313 -.282 1.867 0c.82 -.91 1.694 -2.354 2.628 -2.093c-1.082 1.741 -.07 3.733 1.371 4.173c-.17 .975 -1.484 1.913 -2.76 2.686c-1.296 .938 -.722 1.85 0 2.234c.949 .506 3.611 -1 4.545 .354c-1.698 .102 -1.536 3.107 -3.983 2.727c2.523 .957 4.345 .462 5.458 -.34c1.965 -1.52 2.879 -3.542 2.879 -5.557c-.014 -1.398 .194 -2.695 -1.26 -4.75" /></symbol>
+    <symbol id="i-certificate" viewBox="0 0 24 24"><path d="M12 15a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /> <path d="M13 17.5v4.5l2 -1.5l2 1.5v-4.5" /> <path d="M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -1 1.73" /> <path d="M6 9l12 0" /> <path d="M6 12l3 0" /> <path d="M6 15l2 0" /></symbol>
+    <symbol id="i-school" viewBox="0 0 24 24"><path d="M22 9l-10 -4l-10 4l10 4l10 -4v6" /> <path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4" /></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" /> <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" /> <path d="M3 6l0 13" /> <path d="M12 6l0 13" /> <path d="M21 6l0 13" /></symbol>
+    <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 21l8 0" /> <path d="M12 17l0 4" /> <path d="M7 4l10 0" /> <path d="M17 4v8a5 5 0 0 1 -10 0v-8" /> <path d="M3 9a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M17 9a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /></symbol>
+    <symbol id="i-language" viewBox="0 0 24 24"><path d="M9 6.371c0 4.418 -2.239 6.629 -5 6.629" /> <path d="M4 6.371h7" /> <path d="M5 9c0 2.144 2.252 3.908 6 4" /> <path d="M12 20l4 -9l4 9" /> <path d="M19.1 18h-6.2" /> <path d="M6.694 3l.793 .582" /></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /> <path d="M7 11l5 5l5 -5" /> <path d="M12 4l0 12" /></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M17 7l-10 10" /> <path d="M8 7l9 0l0 9" /></symbol>
+  </defs>
+</svg>
 
-<main class="wrap">
+<!-- wallpaper. drawn in assets/js/main.js: the 3hz prairie in the daytime, sunrise in the dark flavors -->
+<canvas id="wall" aria-hidden="true"></canvas>
 
-  <header class="header">
-    <div class="avatar">
-      <img src="assets/img/avatar-192.webp" alt="Mitchell Berg" width="60" height="60">
-    </div>
-    <div class="header-mid">
-      <div class="name">Mitchell Berg</div>
-      <div class="role">Level II Support · Linux Systems · HPC Environments</div>
-      <div class="contact-row">
-        <a href="mailto:mitchell@mitchellberg.org"><i class="ti ti-mail" aria-hidden="true" style="font-size:13px"></i>mitchell@mitchellberg.org</a>
-        <a href="https://linkedin.com/in/mitchellryanberg/" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin" aria-hidden="true" style="font-size:13px"></i>LinkedIn</a>
-        <a href="https://github.com/Naftaliro" target="_blank" rel="noopener"><i class="ti ti-brand-github" aria-hidden="true" style="font-size:13px"></i>GitHub</a>
-        <a href="#"><i class="ti ti-map-pin" aria-hidden="true" style="font-size:13px"></i>Arlington Heights, IL</a>
-      </div>
-    </div>
-    <div class="header-right">
-      <div class="avail"><div class="avail-dot"></div>at Ace Computers since Aug 2026</div>
-      <a class="dl-btn" href="resume.pdf" download><i class="ti ti-download" aria-hidden="true" style="font-size:13px"></i>resume.pdf</a>
-    </div>
-  </header>
+<a class="skip" href="#top">skip to content</a>
 
-  <section aria-labelledby="summary-heading">
-    <div class="sh" id="summary-heading">summary</div>
-    <div class="summary">Linux-focused IT support professional with 3+ years of experience leading technical operations, resolving complex OS, hardware, software, and connectivity issues, and automating workflows with Bash and Python. Now doing Level II Support at Ace Computers, focused on custom-built systems and HPC environments. Continuing LPIC-1 study.</div>
-  </section>
+<header class="bar">
+  <a class="bar-logo" href="/" aria-label="mitchellberg.org home">
+    <svg viewBox="0 0 10 8" aria-hidden="true"><path d="M0 0h2v1h-2zM1 1h2v1h-2zM2 2h2v2h-2zM1 4h2v1h-2zM0 5h2v1h-2zM4 7h6v1h-6z"/></svg>
+    <span>mitchell berg</span>
+  </a>
+  <nav class="nav" aria-label="sections">
+    <a href="#experience">experience</a>
+    <a href="#projects">projects</a>
+    <a href="#skills">skills</a>
+    <a href="#contact">contact</a>
+  </nav>
+  <div class="bar-mods">
+    <button class="mod mod-flavor" id="flavor" type="button" title="switch catppuccin flavor (t)">
+      <span class="swatch" aria-hidden="true"></span><span class="flavor-name">mocha</span>
+    </button>
+    <a class="mod mod-cv" href="/resume.pdf" download><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg>resume.pdf</a>
+  </div>
+</header>
 
-  <section aria-labelledby="skills-heading">
-    <div class="sh" id="skills-heading">skills</div>
-    <div class="skills-grid">
-      <div class="skill-group">
-        <div class="skill-label">operating systems</div>
-        <div class="skill-pills">
-          <span class="pill">Linux</span><span class="pill">Fedora</span><span class="pill">Arch</span><span class="pill">Debian</span><span class="pill">Ubuntu</span><span class="pill">macOS</span><span class="pill">Windows</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-label">scripting & automation</div>
-        <div class="skill-pills">
-          <span class="pill">Bash</span><span class="pill">Python</span><span class="pill">PowerShell</span><span class="pill">Git</span><span class="pill">GitHub</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-label">systems & infra</div>
-        <div class="skill-pills">
-          <span class="pill">SSH</span><span class="pill">Docker</span><span class="pill">VMware</span><span class="pill">VirtualBox</span><span class="pill">Kubernetes</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-label">networking & security</div>
-        <div class="skill-pills">
-          <span class="pill">TCP/IP</span><span class="pill">WireGuard</span><span class="pill">OpenVPN</span><span class="pill">Firewall</span><span class="pill">OSINT</span><span class="pill">Pen Testing</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-label">endpoint & MDM</div>
-        <div class="skill-pills">
-          <span class="pill">MDM Admin</span><span class="pill">Endpoint Config</span><span class="pill">Device Recovery</span>
-        </div>
-      </div>
-    </div>
-  </section>
+<main class="page" id="top">
 
-  <section aria-labelledby="experience-heading">
-    <div class="sh" id="experience-heading">experience</div>
-
-    <div class="job">
-      <div class="job-line"><div class="job-dot"></div><div class="job-track"></div></div>
-      <div class="job-body">
-        <div class="job-top">
-          <span class="job-title">Level II Support</span>
-          <span class="job-date">Aug 2026 – Present</span>
-        </div>
-        <div class="job-co">Ace Computers · Des Plaines, IL</div>
-        <ul class="job-bullets">
-          <li>Tier-2 technical support for custom-built systems and HPC environments: diagnostics, escalation handling, and Linux/Windows system support</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="job">
-      <div class="job-line"><div class="job-dot"></div><div class="job-track"></div></div>
-      <div class="job-body">
-        <div class="job-top">
-          <span class="job-title">Manager & Lead Technician</span>
-          <span class="job-date">Dec 2022 – Jul 2026</span>
-        </div>
-        <div class="job-co">uBreakiFix by Asurion · Niles, IL</div>
-        <ul class="job-bullets">
-          <li>Led 3–5 technicians across a 15–20 repair/day environment; primary escalation for complex OS, hardware, and software issues across Windows, macOS, iOS, and Android</li>
-          <li>Developed Python and Bash scripts automating internal reporting and inventory workflows, eliminating repetitive manual tasks</li>
-          <li>Built and delivered structured onboarding programs, standardizing repair quality and reducing ramp-up time</li>
-          <li>Administered and troubleshot MDM configurations; executed device unlock and recovery procedures for customer-owned locked devices using deep knowledge of mobile OS architecture</li>
-          <li>Performed OS-level diagnostics including filesystem issues, boot failures, driver conflicts, and system recovery across multiple platforms</li>
-          <li>Troubleshot network connectivity issues including VPN configuration, firewall behavior, and protocol-level diagnostics</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="job">
-      <div class="job-line"><div class="job-dot"></div></div>
-      <div class="job-body">
-        <div class="job-top">
-          <span class="job-title">Sales Representative</span>
-          <span class="job-date">Sep 2018 – Dec 2021</span>
-        </div>
-        <div class="job-co">Preferred Vendors Inc · Schaumburg, IL</div>
-        <ul class="job-bullets">
-          <li>Managed territory sales using CRM platforms, consistently exceeding performance targets through structured outreach and account management</li>
-          <li>Developed strong technical communication skills across in-person and remote client interactions</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section aria-labelledby="projects-heading">
-    <div class="sh" id="projects-heading">projects</div>
-    <div class="proj-grid">
-      <a class="proj" href="https://github.com/Naftaliro/pz-server-manager" target="_blank" rel="noopener">
-        <div class="proj-name"><i class="ti ti-server" aria-hidden="true" style="font-size:14px"></i>Knox Launcher</div>
-        <div class="proj-desc">Windows app for playing Project Zomboid (B42) with friends: host a dedicated server, or join a friend's with their exact mods and fixes. Formerly PZ Server Manager.</div>
-        <div class="proj-lang">Electron · React · TypeScript · Tailwind · Zustand</div>
-      </a>
-      <a class="proj" href="https://apps.apple.com/us/app/upright-alarm/id6820184855" target="_blank" rel="noopener">
-        <div class="proj-name"><i class="ti ti-alarm" aria-hidden="true" style="font-size:14px"></i>Upright Alarm</div>
-        <div class="proj-desc">Free alarm clock app for iPhone, on the App Store since November 2026. Wake-up challenges and optional buddy alerts; no accounts or tracking.</div>
-        <div class="proj-lang">iOS · App Store</div>
-      </a>
-      <a class="proj" href="https://github.com/Naftaliro/first-steps" target="_blank" rel="noopener">
-        <div class="proj-name"><i class="ti ti-rocket" aria-hidden="true" style="font-size:14px"></i>first-steps</div>
-        <div class="proj-desc">GTK4 + LibAdwaita onboarding wizard for Zorin OS 18 and Ubuntu. Guides new Linux users through full setup without a terminal.</div>
-        <div class="proj-lang">Python · GTK4 · LibAdwaita</div>
-      </a>
-      <a class="proj" href="https://github.com/Naftaliro/gnome-theme-switcher" target="_blank" rel="noopener">
-        <div class="proj-name"><i class="ti ti-adjustments" aria-hidden="true" style="font-size:14px"></i>gnome-theme-switcher</div>
-        <div class="proj-desc">Terminal TUI for switching system-wide GNOME themes. Zero external dependencies, 9 built-in themes, full custom support.</div>
-        <div class="proj-lang">Python</div>
-      </a>
-      <a class="proj" href="https://github.com/Naftaliro/zorinos-gnome-themes" target="_blank" rel="noopener">
-        <div class="proj-name"><i class="ti ti-palette" aria-hidden="true" style="font-size:14px"></i>zorinos-gnome-themes</div>
-        <div class="proj-desc">One-liner GNOME theme installation scripts for Zorin OS 18 and Ubuntu, including macOS and Windows theme ports.</div>
-        <div class="proj-lang">Shell</div>
-      </a>
-      <a class="proj" href="https://addons.mozilla.org/en-US/firefox/addon/kestrel-catppuccin-mocha/" target="_blank" rel="noopener">
-        <div class="proj-name"><i class="ti ti-brand-firefox" aria-hidden="true" style="font-size:14px"></i>Kestrel Catppuccin Mocha</div>
-        <div class="proj-desc">A quiet Catppuccin Mocha theme for Firefox, published on addons.mozilla.org.</div>
-        <div class="proj-lang">Firefox theme</div>
-      </a>
-    </div>
-  </section>
-
-  <section aria-labelledby="certs-heading">
-    <div class="sh" id="certs-heading">certifications & education</div>
-    <div class="certs">
-      <div class="cert">
-        <div class="cert-icon"><i class="ti ti-certificate" aria-hidden="true"></i></div>
-        <div>
-          <div class="cert-name">Evolve Security Certified Professional (ESCP)</div>
-          <div class="cert-sub">Evolve Security Academy, Chicago · 400+ hours completed</div>
-        </div>
-        <span class="cert-badge badge-green">completed</span>
-      </div>
-      <div class="cert">
-        <div class="cert-icon"><i class="ti ti-certificate" aria-hidden="true"></i></div>
-        <div>
-          <div class="cert-name">LPIC-1, Linux Professional Institute</div>
-          <div class="cert-sub">Actively studying</div>
-        </div>
-        <span class="cert-badge badge-yellow">in progress</span>
-      </div>
-      <div class="cert">
-        <div class="cert-icon"><i class="ti ti-school" aria-hidden="true"></i></div>
-        <div>
-          <div class="cert-name">Buffalo Grove High School</div>
-          <div class="cert-sub">Graduated 2021</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section aria-labelledby="edu-heading">
-    <div class="sh" id="edu-heading">continuing education</div>
-    <div class="edu-grid">
-      <div class="edu-item"><i class="ti ti-book" aria-hidden="true"></i>Linux System Administration, Linux Academy</div>
-      <div class="edu-item"><i class="ti ti-book" aria-hidden="true"></i>Python for System Administration, edX</div>
-      <div class="edu-item"><i class="ti ti-book" aria-hidden="true"></i>Docker & Kubernetes Fundamentals, Udemy</div>
-      <div class="edu-item"><i class="ti ti-book" aria-hidden="true"></i>Ansible for DevOps, Pluralsight</div>
-    </div>
-  </section>
-
-  <section aria-labelledby="achieve-heading">
-    <div class="sh" id="achieve-heading">achievements</div>
-    <div class="achieve">
-      <div class="achieve-icon"><i class="ti ti-trophy" aria-hidden="true" style="font-size:18px;color:var(--yellow)"></i></div>
+  <section class="win main" aria-labelledby="t-hello">
+    <header class="win-bar"><span class="win-title"><b>mitchell</b> ~</span><span class="win-meta">résumé</span></header>
+    <div class="win-body hello">
+      <img class="hello-pic" src="/assets/img/avatar-192.webp" srcset="/assets/img/avatar-192.webp 192w, /assets/img/avatar-384.webp 384w" sizes="(max-width: 720px) 80px, 112px" width="112" height="112" alt="drawing of Mitchell with curly hair and glasses, smiling, in a black hoodie">
       <div>
-        <div class="achieve-title">PicoCTF 2019: Top 30 Global Finish</div>
-        <div class="achieve-desc">Placed top 30 worldwide in Carnegie Mellon University's annual cybersecurity competition. Applied skills in reverse engineering, cryptography, web exploitation, and binary analysis.</div>
+        <h1 id="t-hello">Mitchell Berg</h1>
+        <p class="role">Level II Support · Linux Systems · HPC Environments</p>
+        <ul class="facts">
+          <li><svg class="ic" aria-hidden="true"><use href="#i-map-pin"/></svg>Arlington Heights, IL</li>
+          <li class="now"><span class="now-dot" aria-hidden="true"></span>at Ace Computers since Aug 2026</li>
+        </ul>
+        <p class="print-contact"><span>mitchell@mitchellberg.org</span><span>linkedin.com/in/mitchellryanberg</span><span>github.com/Naftaliro</span><span>mitchellberg.org</span></p>
+        <div class="actions">
+          <a class="btn" href="/resume.pdf" download><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg>resume.pdf</a>
+          <a class="btn ghost" href="mailto:mitchell@mitchellberg.org"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>mitchell@mitchellberg.org</a>
+          <a class="btn ghost" href="https://linkedin.com/in/mitchellryanberg/" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-brand-linkedin"/></svg>LinkedIn</a>
+          <a class="btn ghost" href="https://github.com/Naftaliro" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-brand-github"/></svg>GitHub</a>
+        </div>
       </div>
     </div>
-    <div class="achieve">
-      <div class="achieve-icon"><i class="ti ti-language" aria-hidden="true" style="font-size:18px;color:var(--sky)"></i></div>
+  </section>
+
+  <section class="win" id="summary" aria-labelledby="t-summary">
+    <header class="win-bar"><h2 id="t-summary"><span class="sr-only">summary</span><span aria-hidden="true"><b>cat</b> summary.md</span></h2></header>
+    <div class="win-body">
+      <p class="summary">Linux-focused IT support professional with 3+ years of experience leading technical operations, resolving complex OS, hardware, software, and connectivity issues, and automating workflows with Bash and Python. Now doing Level II Support at Ace Computers, focused on custom-built systems and HPC environments. Continuing LPIC-1 study.</p>
+    </div>
+  </section>
+
+  <section class="win" id="experience" aria-labelledby="t-experience">
+    <header class="win-bar"><h2 id="t-experience"><span class="sr-only">experience</span><span aria-hidden="true"><b>less</b> experience.md</span></h2><span class="win-meta">3 roles</span></header>
+    <div class="win-body">
+      <ol class="jobs">
+        <li>
+          <p class="job-date">Aug 2026 – Present</p>
+          <div>
+            <h3 class="job-title">Level II Support</h3>
+            <p class="job-co">Ace Computers · Des Plaines, IL</p>
+            <ul class="bullets">
+              <li>Tier-2 technical support for custom-built systems and HPC environments: diagnostics, escalation handling, and Linux/Windows system support</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <p class="job-date">Dec 2022 – Jul 2026</p>
+          <div>
+            <h3 class="job-title">Manager &amp; Lead Technician</h3>
+            <p class="job-co">uBreakiFix by Asurion · Niles, IL</p>
+            <ul class="bullets">
+              <li>Led 3–5 technicians across a 15–20 repair/day environment; primary escalation for complex OS, hardware, and software issues across Windows, macOS, iOS, and Android</li>
+              <li>Developed Python and Bash scripts automating internal reporting and inventory workflows, eliminating repetitive manual tasks</li>
+              <li>Built and delivered structured onboarding programs, standardizing repair quality and reducing ramp-up time</li>
+              <li>Administered and troubleshot MDM configurations; executed device unlock and recovery procedures for customer-owned locked devices using deep knowledge of mobile OS architecture</li>
+              <li>Performed OS-level diagnostics including filesystem issues, boot failures, driver conflicts, and system recovery across multiple platforms</li>
+              <li>Troubleshot network connectivity issues including VPN configuration, firewall behavior, and protocol-level diagnostics</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <p class="job-date">Sep 2018 – Dec 2021</p>
+          <div>
+            <h3 class="job-title">Sales Representative</h3>
+            <p class="job-co">Preferred Vendors Inc · Schaumburg, IL</p>
+            <ul class="bullets">
+              <li>Managed territory sales using CRM platforms, consistently exceeding performance targets through structured outreach and account management</li>
+              <li>Developed strong technical communication skills across in-person and remote client interactions</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="win" id="projects" aria-labelledby="t-projects">
+    <header class="win-bar"><h2 id="t-projects"><span class="sr-only">projects</span><span aria-hidden="true"><b>ls</b> ~/projects</span></h2><span class="win-meta">6 entries</span></header>
+    <div class="win-body">
+      <ul class="projects">
+        <li><a class="proj" href="https://github.com/Naftaliro/pz-server-manager" target="_blank" rel="noopener">
+          <span class="proj-name"><svg class="ic" aria-hidden="true"><use href="#i-server"/></svg><span>Knox Launcher</span></span>
+          <span class="proj-desc">Windows app for playing Project Zomboid (B42) with friends: host a dedicated server, or join a friend's with their exact mods and fixes. Formerly PZ Server Manager.</span>
+          <span class="proj-stack">Electron · React · TypeScript · Tailwind · Zustand</span>
+        </a></li>
+        <li><a class="proj" href="https://apps.apple.com/us/app/upright-alarm/id6820184855" target="_blank" rel="noopener">
+          <span class="proj-name"><svg class="ic" aria-hidden="true"><use href="#i-alarm"/></svg><span>Upright Alarm</span></span>
+          <span class="proj-desc">Free alarm clock app for iPhone, on the App Store since November 2026. Wake-up challenges and optional buddy alerts; no accounts or tracking.</span>
+          <span class="proj-stack">iOS · App Store</span>
+        </a></li>
+        <li><a class="proj" href="https://github.com/Naftaliro/first-steps" target="_blank" rel="noopener">
+          <span class="proj-name"><svg class="ic" aria-hidden="true"><use href="#i-rocket"/></svg><span>first-steps</span></span>
+          <span class="proj-desc">GTK4 + LibAdwaita onboarding wizard for Zorin OS 18 and Ubuntu. Guides new Linux users through full setup without a terminal.</span>
+          <span class="proj-stack">Python · GTK4 · LibAdwaita</span>
+        </a></li>
+        <li><a class="proj" href="https://github.com/Naftaliro/gnome-theme-switcher" target="_blank" rel="noopener">
+          <span class="proj-name"><svg class="ic" aria-hidden="true"><use href="#i-adjustments"/></svg><span>gnome-theme-switcher</span></span>
+          <span class="proj-desc">Terminal TUI for switching system-wide GNOME themes. Zero external dependencies, 9 built-in themes, full custom support.</span>
+          <span class="proj-stack">Python</span>
+        </a></li>
+        <li><a class="proj" href="https://github.com/Naftaliro/zorinos-gnome-themes" target="_blank" rel="noopener">
+          <span class="proj-name"><svg class="ic" aria-hidden="true"><use href="#i-palette"/></svg><span>zorinos-gnome-themes</span></span>
+          <span class="proj-desc">One-liner GNOME theme installation scripts for Zorin OS 18 and Ubuntu, including macOS and Windows theme ports.</span>
+          <span class="proj-stack">Shell</span>
+        </a></li>
+        <li><a class="proj" href="https://addons.mozilla.org/en-US/firefox/addon/kestrel-catppuccin-mocha/" target="_blank" rel="noopener">
+          <span class="proj-name"><svg class="ic" aria-hidden="true"><use href="#i-brand-firefox"/></svg><span>Kestrel Catppuccin Mocha</span></span>
+          <span class="proj-desc">A quiet Catppuccin Mocha theme for Firefox, published on addons.mozilla.org.</span>
+          <span class="proj-stack">Firefox theme</span>
+        </a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="win" id="achievements" aria-labelledby="t-achievements">
+    <header class="win-bar"><h2 id="t-achievements"><span class="sr-only">achievements</span><span aria-hidden="true"><b>cat</b> achievements.txt</span></h2></header>
+    <div class="win-body">
+      <ul class="rows">
+        <li>
+          <span class="row-ic gold"><svg class="ic" aria-hidden="true"><use href="#i-trophy"/></svg></span>
+          <div class="row-main"><p class="row-title">PicoCTF 2019: Top 30 Global Finish</p><p class="row-sub">Placed top 30 worldwide in Carnegie Mellon University's annual cybersecurity competition. Applied skills in reverse engineering, cryptography, web exploitation, and binary analysis.</p></div>
+        </li>
+        <li>
+          <span class="row-ic sky"><svg class="ic" aria-hidden="true"><use href="#i-language"/></svg></span>
+          <div class="row-main"><p class="row-title">Languages</p><p class="row-sub">English (native) &nbsp;·&nbsp; Russian (basic conversational)</p></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="win" id="skills" aria-labelledby="t-skills">
+    <header class="win-bar"><h2 id="t-skills"><span class="sr-only">skills</span><span aria-hidden="true"><b>ls</b> ~/skills</span></h2><span class="win-meta">5 groups</span></header>
+    <div class="win-body skills">
       <div>
-        <div class="achieve-title">Languages</div>
-        <div class="achieve-desc">English (native) &nbsp;·&nbsp; Russian (basic conversational)</div>
+        <h3 class="label">operating systems</h3>
+        <ul class="chips"><li>Linux</li><li>Fedora</li><li>Arch</li><li>Debian</li><li>Ubuntu</li><li>macOS</li><li>Windows</li></ul>
+      </div>
+      <div>
+        <h3 class="label">scripting &amp; automation</h3>
+        <ul class="chips"><li>Bash</li><li>Python</li><li>PowerShell</li><li>Git</li><li>GitHub</li></ul>
+      </div>
+      <div>
+        <h3 class="label">systems &amp; infra</h3>
+        <ul class="chips"><li>SSH</li><li>Docker</li><li>VMware</li><li>VirtualBox</li><li>Kubernetes</li></ul>
+      </div>
+      <div>
+        <h3 class="label">networking &amp; security</h3>
+        <ul class="chips"><li>TCP/IP</li><li>WireGuard</li><li>OpenVPN</li><li>Firewall</li><li>OSINT</li><li>Pen Testing</li></ul>
+      </div>
+      <div>
+        <h3 class="label">endpoint &amp; MDM</h3>
+        <ul class="chips"><li>MDM Admin</li><li>Endpoint Config</li><li>Device Recovery</li></ul>
       </div>
     </div>
   </section>
 
-  <section aria-labelledby="contact-heading">
-    <div class="sh" id="contact-heading">contact</div>
-    <div class="contact-grid">
-      <a class="contact-card" href="mailto:mitchell@mitchellberg.org">
-        <div class="contact-icon"><i class="ti ti-mail" aria-hidden="true"></i></div>
-        <div><div class="contact-name">email</div><div class="contact-val">mitchell@mitchellberg.org</div></div>
-      </a>
-      <a class="contact-card" href="https://linkedin.com/in/mitchellryanberg/" target="_blank" rel="noopener">
-        <div class="contact-icon"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></div>
-        <div><div class="contact-name">linkedin</div><div class="contact-val">mitchellryanberg</div></div>
-      </a>
-      <a class="contact-card" href="https://github.com/Naftaliro" target="_blank" rel="noopener">
-        <div class="contact-icon"><i class="ti ti-brand-github" aria-hidden="true"></i></div>
-        <div><div class="contact-name">github</div><div class="contact-val">Naftaliro</div></div>
-      </a>
-      <a class="contact-card" href="resume.pdf" download>
-        <div class="contact-icon"><i class="ti ti-file-text" aria-hidden="true"></i></div>
-        <div><div class="contact-name">resume</div><div class="contact-val">download PDF</div></div>
-      </a>
+  <section class="win" id="certs" aria-labelledby="t-certs">
+    <header class="win-bar"><h2 id="t-certs"><span class="sr-only">certifications &amp; education</span><span aria-hidden="true"><b>cat</b> certs.txt</span></h2></header>
+    <div class="win-body">
+      <ul class="rows">
+        <li>
+          <span class="row-ic"><svg class="ic" aria-hidden="true"><use href="#i-certificate"/></svg></span>
+          <div class="row-main"><p class="row-title">Evolve Security Certified Professional (ESCP)</p><p class="row-sub">Evolve Security Academy, Chicago · 400+ hours completed</p></div>
+          <span class="badge done">completed</span>
+        </li>
+        <li>
+          <span class="row-ic"><svg class="ic" aria-hidden="true"><use href="#i-certificate"/></svg></span>
+          <div class="row-main"><p class="row-title">LPIC-1, Linux Professional Institute</p><p class="row-sub">Actively studying</p></div>
+          <span class="badge wip">in progress</span>
+        </li>
+        <li>
+          <span class="row-ic"><svg class="ic" aria-hidden="true"><use href="#i-school"/></svg></span>
+          <div class="row-main"><p class="row-title">Buffalo Grove High School</p><p class="row-sub">Graduated 2021</p></div>
+        </li>
+      </ul>
+      <h3 class="label sub-head">continuing education</h3>
+      <ul class="courses">
+        <li><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg>Linux System Administration, Linux Academy</li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg>Python for System Administration, edX</li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg>Docker &amp; Kubernetes Fundamentals, Udemy</li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg>Ansible for DevOps, Pluralsight</li>
+      </ul>
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <footer class="footer">
-    <div>© 2026 Mitchell Berg · Arlington Heights, IL</div>
-    <div style="display:flex;gap:12px">
-      <a href="https://3hz.dev">3hz.dev</a>
-      <a href="https://naftaliro.dev">naftaliro.dev</a>
+  <section class="win" id="contact" aria-labelledby="t-contact">
+    <header class="win-bar"><h2 id="t-contact"><span class="sr-only">contact</span><span aria-hidden="true"><b>rofi</b> contact</span></h2><span class="win-meta">4 entries</span></header>
+    <div class="win-body">
+      <ul class="rofi-list">
+        <li><a href="mailto:mitchell@mitchellberg.org"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg><span class="r-name">email</span><span class="r-desc">mitchell@mitchellberg.org</span></a></li>
+        <li><a href="https://linkedin.com/in/mitchellryanberg/" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-brand-linkedin"/></svg><span class="r-name">linkedin</span><span class="r-desc">mitchellryanberg</span></a></li>
+        <li><a href="https://github.com/Naftaliro" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-brand-github"/></svg><span class="r-name">github</span><span class="r-desc">Naftaliro</span></a></li>
+        <li><a href="/resume.pdf" download><svg class="ic" aria-hidden="true"><use href="#i-file-download"/></svg><span class="r-name">resume</span><span class="r-desc">download PDF</span></a></li>
+      </ul>
     </div>
-  </footer>
+  </section>
 
 </main>
+
+<footer class="foot">
+  <p>© 2026 Mitchell Berg · Arlington Heights, IL</p>
+  <p><a href="https://3hz.dev">3hz.dev</a> · <a href="https://naftaliro.dev">naftaliro.dev</a></p>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
 </body>
 </html>
