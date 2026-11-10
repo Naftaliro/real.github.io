@@ -63,11 +63,18 @@ Linux-focused IT support professional with 3+ years of experience leading techni
 == Selected Projects
 
 #project(
-  name: "pz-server-manager",
+  name: "Knox Launcher (formerly PZ Server Manager)",
   role: "Maintainer",
   url: "github.com/Naftaliro/pz-server-manager",
 )
-- Windows desktop application for managing Project Zomboid dedicated servers, with SteamCMD integration, live console access, mod management, and automatic updates.
+- Windows app for playing Project Zomboid with friends: hosts a server or joins a friend's with their exact mods.
+
+#project(
+  name: "Upright Alarm",
+  role: "Developer",
+  url: "upright.3hz.dev",
+)
+- Free iOS alarm clock on the App Store since Nov 2026, with wake-up challenges and optional buddy alerts.
 
 #project(
   name: "first-steps",
@@ -75,6 +82,13 @@ Linux-focused IT support professional with 3+ years of experience leading techni
   url: "github.com/Naftaliro/first-steps",
 )
 - GTK4 + LibAdwaita onboarding wizard for Zorin OS 18 and Ubuntu-based systems; guides new Linux users through setup without a terminal.
+
+#project(
+  name: "Kestrel Catppuccin Mocha",
+  role: "Author",
+  url: "addons.mozilla.org/en-US/firefox/addon/kestrel-catppuccin-mocha",
+)
+- Catppuccin Mocha theme for Firefox, published on addons.mozilla.org.
 
 == Certifications & Recognition
 
